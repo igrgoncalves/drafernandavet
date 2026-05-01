@@ -1,0 +1,148 @@
+/* 
+  DESIGN SYSTEM - DRA. FERNANDA MORENO
+  Architecture: igtech-skill.md 
+  Identity: 70% Clean / 30% Warm
+*/
+
+:root {
+  /* Colors - Nature & Balance */
+  --color-bg: #fdfbf7;
+  --color-white: #ffffff;
+  --color-primary: #4a5d4e;       /* Sage Green */
+  --color-primary-light: #6b8170;
+  --color-accent: #c28e6c;        /* Earthy Clay */
+  --color-accent-light: #dab8a1;
+  --color-text: #2c2c2c;
+  --color-text-light: #555555;
+  --color-border: #e2e2e2;
+  --color-success: #2d5a27;
+  --color-error: #a83232;
+
+  /* Typography - Fluid (Mobile-first) */
+  --font-main: 'Poppins', sans-serif;
+  
+  /* Font Sizes using clamp(min, preferred, max) - Adjusted for more elegance */
+  --fs-h1: clamp(2rem, 4vw, 3rem);
+  --fs-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --fs-h3: clamp(1.25rem, 2.5vw, 1.75rem);
+  --fs-body: clamp(0.9375rem, 1vw, 1.0625rem);
+  --fs-small: 0.8125rem;
+
+  /* Spacing - Tightened */
+  --space-unit: clamp(0.75rem, 1.5vw, 1.5rem);
+  --container-max-width: 1140px;
+  --section-padding: clamp(3rem, 7vw, 5.5rem);
+
+  /* Transitions & Shadows */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, video, picture {
+  max-width: 100%;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+/* Typography Base */
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+
+p {
+  font-size: var(--fs-body);
+  color: var(--color-text-light);
+  margin-bottom: 1.25rem;
+}
+
+/* Layout Classes */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: var(--section-padding) 0;
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+
+/* Scroll Reveal Base */
+.reveal { 
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+.reveal.active { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+/* Micro-interactions */
+.hover-lift {
+  transition: var(--transition-smooth);
+}
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 15px 30px rgba(74, 93, 78, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
