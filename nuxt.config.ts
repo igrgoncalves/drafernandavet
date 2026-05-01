@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: '/drafernandavet/',
+    buildAssetsDir: 'assets',
     head: {
       title: 'Dra. Fernanda Moreno - Medicina Veterinária Integrativa',
       meta: [
