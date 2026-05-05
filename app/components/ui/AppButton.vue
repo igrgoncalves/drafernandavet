@@ -77,7 +77,7 @@ defineProps({
   color: var(--color-primary);
 }
 .btn-ghost:hover:not(:disabled) {
-  background-color: rgba(74, 93, 78, 0.05);
+  background-color: rgba(114, 30, 18, 0.05);
 }
 
 /* Sizes */

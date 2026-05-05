@@ -11,12 +11,12 @@ useSeoMeta({
 
 <template>
   <main class="contato-page">
-    <section class="page-hero section">
-      <div class="container text-center reveal">
-        <h1>Vamos <span>Conversar</span>?</h1>
-        <p class="subtitle">Escolha o melhor canal para tirar suas dúvidas ou agendar uma avaliação.</p>
-      </div>
-    </section>
+    <PageHeader 
+      title="Vamos <span>Conversar</span>?"
+      subtitle="Escolha o melhor canal para tirar suas dúvidas ou agendar uma avaliação para o seu animal. Atendimento presencial e online."
+      badge="Contato"
+      imageSrc="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?q=80&w=1000&auto=format&fit=crop"
+    />
 
     <ContactSection />
 
@@ -56,11 +56,6 @@ useSeoMeta({
 </template>
 
 <style scoped>
-.page-hero {
-  padding-top: 10rem;
-  background-color: var(--color-bg);
-}
-
 .logistics-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

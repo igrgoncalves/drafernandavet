@@ -365,7 +365,7 @@ const journeySteps = [
 .academic-card:hover {
   border-color: var(--color-accent-light);
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(74, 93, 78, 0.1);
+  box-shadow: 0 12px 24px rgba(114, 30, 18, 0.1);
 }
 
 .card-icon {

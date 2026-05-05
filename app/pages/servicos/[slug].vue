@@ -43,13 +43,15 @@ useSeoMeta({
 
 <template>
   <main class="service-detail-page">
-    <section class="page-hero section">
-      <div class="container text-center reveal">
-        <NuxtLink to="/servicos" class="back-link">&larr; Voltar para Serviços</NuxtLink>
-        <h1>{{ service.title }}</h1>
-        <p class="subtitle">{{ service.desc }}</p>
-      </div>
-    </section>
+    <PageHeader 
+      :title="service.title"
+      :subtitle="service.desc"
+      :imageSrc="service.image"
+    >
+      <template #actions>
+        <NuxtLink to="/servicos" class="back-link-clean">&larr; Voltar para Serviços</NuxtLink>
+      </template>
+    </PageHeader>
 
     <section class="service-content section">
       <div class="container content-grid">
@@ -78,17 +80,20 @@ useSeoMeta({
 </template>
 
 <style scoped>
-.page-hero {
-  padding-top: 10rem;
-  background-color: var(--color-bg);
-}
-
-.back-link {
+.back-link-clean {
   display: inline-block;
   margin-bottom: 2rem;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: var(--color-accent);
+  transition: var(--transition-smooth);
+}
+
+.back-link-clean:hover {
+  color: var(--color-primary);
+  transform: translateX(-5px);
 }
 
 .content-grid {

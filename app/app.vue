@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { revealElements } = useReveal()
 const route = useRoute()
 
@@ -16,9 +16,19 @@ watch(() => route.path, () => {
 </script>
 
 <template>
-  <div>
+  <div class="app-wrapper">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
+    
+    <!-- Global Floating WhatsApp Button (Hidden on /links) -->
+    <AppWhatsApp v-if="route.path !== '/links'" />
   </div>
 </template>
+
+<style>
+.app-wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+</style>

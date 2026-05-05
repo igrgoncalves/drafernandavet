@@ -196,7 +196,7 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
   border-color: var(--color-primary-light);
-  box-shadow: 0 0 0 3px rgba(74, 93, 78, 0.1);
+  box-shadow: 0 0 0 3px rgba(114, 30, 18, 0.1);
 }
 
 .success-msg {

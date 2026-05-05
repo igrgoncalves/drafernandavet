@@ -1,0 +1,28 @@
+/* 
+  PALETTE BACKUP - NATURE & BALANCE (GREEN)
+  Saved on: 04/05/2026
+*/
+
+:root {
+  --color-bg: #fdfbf7;
+  --color-white: #ffffff;
+  --color-primary: #4a5d4e;       /* Sage Green */
+  --color-primary-light: #6b8170;
+  --color-accent: #c28e6c;        /* Earthy Clay */
+  --color-accent-light: #dab8a1;
+  --color-text: #2c2c2c;
+  --color-text-light: #555555;
+  --color-border: #e2e2e2;
+  --color-success: #2d5a27;
+  --color-error: #a83232;
+}
+
+/* Links Page Backup */
+/* 
+.bg-overlay {
+  background: linear-gradient(180deg, rgba(20, 30, 22, 0.7) 0%, rgba(74, 93, 78, 0.8) 100%);
+}
+.avatar-wrapper {
+  background: linear-gradient(45deg, #A8C69F, #fff);
+}
+*/

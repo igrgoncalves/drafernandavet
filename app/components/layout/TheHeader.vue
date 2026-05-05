@@ -109,7 +109,7 @@ const toggleMenu = () => {
   background: rgba(253, 251, 247, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(74, 93, 78, 0.08);
+  border: 1px solid rgba(114, 30, 18, 0.08);
   border-radius: 100px;
   padding: 0.75rem 2rem;
   display: flex;
@@ -122,7 +122,7 @@ const toggleMenu = () => {
 .header-scrolled .header-wrapper {
   background: rgba(253, 251, 247, 0.9);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
-  border-color: rgba(74, 93, 78, 0.15);
+  border-color: rgba(114, 30, 18, 0.15);
   padding: 0.5rem 1.5rem;
 }
 

@@ -99,8 +99,8 @@ const services = [
   background: linear-gradient(
     to bottom,
     transparent 40%,
-    rgba(74, 93, 78, 0.6) 70%,
-    rgba(74, 93, 78, 0.95) 100%
+    rgba(114, 30, 18, 0.6) 70%,
+    rgba(114, 30, 18, 0.95) 100%
   );
   z-index: 1;
   transition: var(--transition-smooth);
@@ -110,8 +110,8 @@ const services = [
   background: linear-gradient(
     to bottom,
     transparent 20%,
-    rgba(74, 93, 78, 0.7) 60%,
-    rgba(74, 93, 78, 0.98) 100%
+    rgba(114, 30, 18, 0.7) 60%,
+    rgba(114, 30, 18, 0.98) 100%
   );
 }
 

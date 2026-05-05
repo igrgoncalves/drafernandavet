@@ -38,12 +38,12 @@ const posts = [
 
 <template>
   <main class="blog-page">
-    <section class="page-hero section">
-      <div class="container text-center reveal">
-        <h1>Dicas da <span>Vet</span></h1>
-        <p class="subtitle">Artigos, orientações e novidades sobre o mundo veterinário integrado.</p>
-      </div>
-    </section>
+    <PageHeader 
+      title="Dicas da <span>Vet</span>"
+      subtitle="Artigos, orientações e novidades para ajudar você a cuidar melhor da saúde e do comportamento do seu animal."
+      badge="Blog"
+      imageSrc="https://images.unsplash.com/photo-1581888227599-779811939961?q=80&w=1000&auto=format&fit=crop"
+    />
 
     <section class="blog-grid-section section">
       <div class="container">
@@ -69,11 +69,6 @@ const posts = [
 </template>
 
 <style scoped>
-.page-hero {
-  padding-top: 10rem;
-  background-color: var(--color-bg);
-}
-
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

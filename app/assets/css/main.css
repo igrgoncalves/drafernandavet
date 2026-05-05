@@ -5,18 +5,23 @@
 */
 
 :root {
-  /* Colors - Nature & Balance */
-  --color-bg: #fdfbf7;
+  /* 
+    DESIGN SYSTEM - BURGUNDY & ROSE
+    Confirmed as official palette on 04/05/2026
+  */
+  --color-bg: #fffaf9;
   --color-white: #ffffff;
-  --color-primary: #4a5d4e;       /* Sage Green */
-  --color-primary-light: #6b8170;
-  --color-accent: #c28e6c;        /* Earthy Clay */
-  --color-accent-light: #dab8a1;
+  --color-primary: #721e12;       /* Burgundy */
+  --color-primary-light: #96493a;
+  --color-accent: #b97462;        /* Deep Rose */
+  --color-accent-light: #dc9f89;
   --color-text: #2c2c2c;
   --color-text-light: #555555;
   --color-border: #e2e2e2;
   --color-success: #2d5a27;
   --color-error: #a83232;
+
+  /* Original Green Palette kept in app/assets/css/palette-backup.css */
 
   /* Typography - Fluid (Mobile-first) */
   --font-main: 'Poppins', sans-serif;
@@ -129,7 +134,7 @@ p {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 15px 30px rgba(74, 93, 78, 0.15);
+  box-shadow: 0 15px 30px rgba(114, 30, 18, 0.15);
 }
 
 /* Custom Scrollbar */

@@ -91,7 +91,7 @@ onUnmounted(() => {
 .badge {
   display: inline-block;
   padding: 0.5rem 1.25rem;
-  background: rgba(74, 93, 78, 0.1);
+  background: rgba(114, 30, 18, 0.1);
   color: var(--color-primary);
   border-radius: 50px;
   font-size: 0.75rem;

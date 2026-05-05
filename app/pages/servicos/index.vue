@@ -77,12 +77,12 @@ const therapies = [
 
 <template>
   <main class="servicos-page">
-    <section class="page-hero section">
-      <div class="container text-center reveal">
-        <h1>Nossos <span>Serviços</span></h1>
-        <p class="subtitle">Integração criteriosa entre avaliação clínica e comportamental.</p>
-      </div>
-    </section>
+    <PageHeader 
+      title="Nossos <span>Serviços</span>"
+      subtitle="Uma abordagem integrativa que une medicina convencional e terapias complementares para o bem-estar pleno do seu animal."
+      badge="Especialidades"
+      imageSrc="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?q=80&w=1000&auto=format&fit=crop"
+    />
 
     <!-- Áreas de Atuação -->
     <ServicesModernSection />
@@ -110,11 +110,6 @@ const therapies = [
 </template>
 
 <style scoped>
-.page-hero {
-  padding-top: 10rem;
-  background-color: var(--color-bg);
-}
-
 .services-list {
   display: flex;
   flex-direction: column;
