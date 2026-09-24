@@ -9,9 +9,10 @@
       </div>
 
       <div class="services-vertical-grid">
-        <div 
+        <NuxtLink 
           v-for="service in services" 
           :key="service.title" 
+          :to="service.link"
           class="service-vertical-card reveal"
           :style="{ backgroundImage: `url(${service.image})` }"
         >
@@ -21,11 +22,14 @@
               <h3>{{ service.title }}</h3>
               <p>{{ service.description }}</p>
             </div>
-            <AppButton :to="service.link" variant="outline" size="sm" class="btn-white">
-              Ver Detalhes
-            </AppButton>
+            <div class="btn-detail-wrapper">
+              <span class="btn-fake-pill">
+                <span>Ver Detalhes</span>
+                <Icon name="ph:arrow-right-bold" />
+              </span>
+            </div>
           </div>
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -82,6 +86,7 @@ const services = [
   transition: var(--transition-smooth);
   box-shadow: var(--shadow-md);
   cursor: pointer;
+  text-decoration: none;
 }
 
 .service-vertical-card:hover {
@@ -139,16 +144,29 @@ const services = [
   margin-bottom: 0;
 }
 
-/* Estilização do botão para contraste no fundo escuro */
-.btn-white {
-  border-color: rgba(255, 255, 255, 0.5) !important;
-  color: var(--color-white) !important;
-  align-self: flex-start;
+/* Estilização do botão em formato pílula */
+.btn-detail-wrapper {
+  margin-top: 0.5rem;
 }
 
-.btn-white:hover {
-  background-color: var(--color-white) !important;
-  color: var(--color-primary) !important;
+.btn-fake-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+  transition: var(--transition-smooth);
+}
+
+.service-vertical-card:hover .btn-fake-pill {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
+  transform: translateX(4px);
 }
 
 @media (max-width: 1024px) {

@@ -140,6 +140,7 @@ const journeySteps = [
 
     <!-- Bagagem Acadêmica (A alma científica) -->
     <section class="academic-path section">
+      <AmbientPawsTrail species="dog" variant="diagonal-down" :opacity="0.05" />
       <div class="container">
         <div class="section-header text-center reveal">
           <h2 class="section-title">Fundamento <span>Acadêmico</span></h2>
@@ -181,6 +182,55 @@ const journeySteps = [
       </div>
     </section>
 
+    <!-- Clínica Parceira: Fisio Care Pet -->
+    <section class="parceira-section section">
+      <div class="container">
+        <div class="parceira-card reveal">
+          <div class="parceira-badge">
+            <Icon name="ph:map-pin-fill" />
+            <span>Atendimento Presencial</span>
+          </div>
+          <div class="parceira-grid">
+            <div class="parceira-info">
+              <h2 class="section-title">Onde me <span>encontrar</span></h2>
+              <p class="parceira-desc">
+                Para consultas e sessões presenciais, atendo na <strong>Fisio Care Pet</strong> — referência em reabilitação e fisioterapia veterinária na Zona Leste de São Paulo.
+              </p>
+              <ul class="parceira-details">
+                <li>
+                  <Icon name="ph:buildings-fill" />
+                  <span><strong>Fisio Care Pet</strong> — Zona Leste</span>
+                </li>
+                <li>
+                  <Icon name="ph:map-pin-fill" />
+                  <span>Rua Alonso Calhamares, 363 (Pet Shop Bicho Solto) — Penha, SP</span>
+                </li>
+                <li>
+                  <Icon name="ph:phone-fill" />
+                  <span>(11) 99591-1206 / (11) 95303-1449</span>
+                </li>
+                <li>
+                  <Icon name="ph:globe-fill" />
+                  <a href="https://fisiocarepet.com.br" target="_blank" rel="noopener">fisiocarepet.com.br</a>
+                </li>
+              </ul>
+              <AppButton to="/contato" variant="primary" size="md">Agendar na Clínica</AppButton>
+            </div>
+            <div class="parceira-logo-wrap">
+              <div class="logo-frame">
+                <Icon name="ph:first-aid-kit-fill" class="clinic-icon" />
+                <div class="clinic-name">
+                  <span class="clinic-main">Fisio Care</span>
+                  <span class="clinic-sub">Pet Academy</span>
+                </div>
+                <p class="clinic-region">Zona Leste · São Paulo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Final Inspirador -->
     <section class="final-cta section reveal">
       <div class="container">
@@ -203,14 +253,14 @@ const journeySteps = [
 
 /* Header */
 .sobre-header {
-  padding-top: 12rem;
-  padding-bottom: 8rem;
+  padding-top: 9rem;
+  padding-bottom: 4rem;
 }
 
 .header-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  gap: 4rem;
   align-items: center;
 }
 
@@ -288,21 +338,22 @@ const journeySteps = [
 }
 
 .manifesto-card {
-  background: var(--color-bg);
+  background: var(--color-bg-warm);
+  border: 1px solid var(--color-border);
   border-radius: 30px;
-  padding: 4rem;
+  padding: 2.5rem 3rem;
   transition: var(--transition-smooth);
 }
 
 .manifesto-card:hover {
-  background: #f8f4ed;
+  background: #f5e8e3;
 }
 
 .text-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .text-columns p {
@@ -312,9 +363,9 @@ const journeySteps = [
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
   border-top: 1px solid var(--color-border);
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 .pillar-item {
@@ -346,6 +397,17 @@ const journeySteps = [
 }
 
 /* Academic Modern Grid */
+.academic-path {
+  position: relative;
+  background-color: var(--color-bg-warm);
+  overflow: hidden;
+}
+
+.academic-path .container {
+  position: relative;
+  z-index: 2;
+}
+
 .academic-modern-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -390,7 +452,7 @@ const journeySteps = [
 /* Timeline */
 .timeline-container {
   max-width: 800px;
-  margin: 3rem auto 0;
+  margin: 2rem auto 0;
   position: relative;
 }
 
@@ -407,7 +469,7 @@ const journeySteps = [
 .timeline-step {
   display: flex;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
@@ -441,11 +503,160 @@ const journeySteps = [
   font-size: 0.9375rem;
 }
 
+/* Parceira */
+.parceira-section {
+  background: var(--color-bg-warm);
+}
+
+.parceira-card {
+  background: var(--color-white);
+  border-radius: 30px;
+  border: 1px solid var(--color-border);
+  padding: 2.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease;
+}
+
+.parceira-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  border-radius: 4px 0 0 4px;
+}
+
+.parceira-card:hover {
+  box-shadow: 0 16px 40px rgba(114, 30, 18, 0.1);
+}
+
+.parceira-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(114, 30, 18, 0.08);
+  color: var(--color-primary);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.parceira-badge .iconify {
+  font-size: 0.9rem;
+}
+
+.parceira-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+}
+
+.parceira-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 1rem 0 2rem;
+  color: var(--color-text-light);
+}
+
+.parceira-details {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.parceira-details li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.parceira-details .iconify {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.parceira-details a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.parceira-details a:hover {
+  color: var(--color-accent);
+}
+
+.logo-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2.5rem 3rem;
+  background: var(--color-bg);
+  border-radius: 24px;
+  border: 2px dashed var(--color-border);
+  min-width: 200px;
+  transition: 0.4s ease;
+}
+
+.logo-frame:hover {
+  border-color: var(--color-accent);
+  background: rgba(185, 116, 98, 0.05);
+}
+
+.clinic-icon {
+  font-size: 3.5rem;
+  color: var(--color-primary);
+}
+
+.clinic-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.clinic-main {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.clinic-sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.clinic-region {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
 /* Final CTA */
 .cta-banner {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   border-radius: 30px;
-  padding: 4rem;
+  padding: 3rem;
   text-align: center;
   color: var(--color-white);
   transition: transform 0.4s ease;
@@ -461,13 +672,31 @@ const journeySteps = [
 @media (max-width: 1024px) {
   .header-grid, .text-columns, .pillars-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
   
   .manifesto-card, .cta-banner {
-    padding: 3rem 2rem;
+    padding: 2rem 1.5rem;
   }
   
+  .sobre-header {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+  }
+
   .header-visual { order: -1; margin: 0 auto; }
+
+  .parceira-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .parceira-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .logo-frame {
+    margin: 0 auto;
+  }
 }
 </style>

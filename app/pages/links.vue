@@ -19,19 +19,22 @@ const mainLinks = [
     badge: badgeText,
     badgeClass: badgeClass,
     url: 'https://wa.me/5511966176405',
-    icon: 'ph:whatsapp-logo-duotone'
+    icon: 'ph:whatsapp-logo-duotone',
+    type: 'whatsapp'
   },
   {
     title: 'Instagram',
     subtitle: 'Dra. Fernanda Moreno | @meuvinculovet',
     url: 'https://instagram.com/meuvinculovet',
-    icon: 'ph:instagram-logo-duotone'
+    icon: 'ph:instagram-logo-duotone',
+    type: 'instagram'
   },
   {
     title: 'Website Oficial',
     subtitle: 'Conheça nossa Metodologia',
     url: '/',
-    icon: 'ph:globe-duotone'
+    icon: 'ph:globe-duotone',
+    type: 'website'
   }
 ]
 
@@ -41,14 +44,16 @@ const shopLinks = [
     subtitle: 'Minha Loja',
     url: 'https://br.shp.ee/9x8LoUW4',
     icon: 'ph:bag-duotone',
-    class: 'link-shopee'
+    class: 'link-shopee',
+    type: 'shopee'
   },
   {
     title: 'Mercado Livre',
     subtitle: 'Minhas Indicações',
     url: 'https://www.mercadolivre.com.br/social/mofe5595439/lists',
     icon: 'ph:shopping-cart-duotone',
-    class: 'link-mercadolivre'
+    class: 'link-mercadolivre',
+    type: 'mercadolivre'
   }
 ]
 
@@ -72,14 +77,16 @@ const partnerLinks = [
     subtitle: 'Cupom: MVP10',
     code: 'MVP10',
     url: 'https://www.bichoorganico.com.br/',
-    icon: 'ph:leaf-duotone'
+    icon: 'ph:leaf-duotone',
+    type: 'bicho'
   },
   {
     title: 'Petz',
     subtitle: 'Cupom: LARAETECA',
     code: 'LARAETECA',
     url: 'https://www.petz.com.br/?gad_source=1',
-    icon: 'ph:storefront-duotone'
+    icon: 'ph:storefront-duotone',
+    type: 'petz'
   }
 ]
 
@@ -173,7 +180,7 @@ useHead({
       <!-- Perfil -->
       <header class="profile-section reveal-up" style="--delay: 0.1s">
         <div class="avatar-wrapper">
-          <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?q=80&w=200&h=200&auto=format&fit=crop" alt="Dra. Fernanda Moreno" class="avatar" />
+          <img src="/images/fernanda-perfil.jpg" alt="Dra. Fernanda Moreno" class="avatar" />
           <div class="status-indicator">
             <span class="pulse"></span>
           </div>
@@ -196,7 +203,7 @@ useHead({
             target="_blank"
           >
             <div class="link-glow"></div>
-            <div class="link-icon">
+            <div :class="['link-icon', `icon-${link.type || 'default'}`]">
               <Icon :name="link.icon" size="24" />
             </div>
             <div class="link-content">
@@ -223,7 +230,7 @@ useHead({
             :style="{ '--delay': `${0.6 + (index * 0.1)}s` }"
           >
             <div class="link-glow"></div>
-            <div class="link-icon">
+            <div :class="['link-icon', `icon-${link.type || 'default'}`]">
               <Icon :name="link.icon" size="24" />
             </div>
             <div class="link-content">
@@ -259,7 +266,7 @@ useHead({
             target="_blank"
           >
             <div class="link-glow"></div>
-            <div class="link-icon-small">
+            <div :class="['link-icon-small', `icon-${link.type || 'default'}`]">
               <Icon :name="link.icon" size="20" />
             </div>
             <div class="link-content">
@@ -698,19 +705,123 @@ useHead({
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 1rem;
-  color: #fff;
+  border-radius: 14px;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 4px 14px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-shrink: 0;
 }
 
 .link-icon {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
 }
 
 .link-icon-small {
   width: 40px;
   height: 40px;
+}
+
+/* Efeito de profundidade e leve elevação ao passar o mouse */
+.link-card:hover .link-icon,
+.link-card-small:hover .link-icon-small {
+  transform: scale(1.08) translateY(-1px);
+}
+
+.link-icon .iconify,
+.link-icon-small .iconify {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.link-card:hover .link-icon .iconify {
+  transform: scale(1.06);
+}
+
+/* 1. WhatsApp - Verde esmeralda suave com halo luminoso */
+.icon-whatsapp {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.28) 0%, rgba(18, 140, 126, 0.16) 100%);
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  color: #38ef7d;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(37, 211, 102, 0.2);
+}
+.link-card:hover .icon-whatsapp {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 6px 20px rgba(37, 211, 102, 0.4);
+  border-color: rgba(37, 211, 102, 0.7);
+}
+
+/* 2. Instagram - Pôr-do-sol sutil (magenta & laranja suave) */
+.icon-instagram {
+  background: linear-gradient(135deg, rgba(225, 48, 108, 0.3) 0%, rgba(247, 119, 55, 0.18) 100%);
+  border: 1px solid rgba(225, 48, 108, 0.45);
+  color: #ff6e96;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(225, 48, 108, 0.2);
+}
+.link-card:hover .icon-instagram {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 6px 20px rgba(225, 48, 108, 0.4);
+  border-color: rgba(225, 48, 108, 0.7);
+}
+
+/* 3. Website Oficial - Rosé Dourado refinado da paleta */
+.icon-website {
+  background: linear-gradient(135deg, rgba(220, 159, 137, 0.35) 0%, rgba(185, 116, 98, 0.2) 100%);
+  border: 1px solid rgba(220, 159, 137, 0.55);
+  color: #fed7cd;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(185, 116, 98, 0.2);
+}
+.link-card:hover .icon-website {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 6px 20px rgba(185, 116, 98, 0.4);
+  border-color: rgba(220, 159, 137, 0.8);
+}
+
+/* 4. Bicho Orgânico - Verde folha natural */
+.icon-bicho {
+  background: linear-gradient(135deg, rgba(134, 239, 172, 0.3) 0%, rgba(34, 197, 94, 0.16) 100%);
+  border: 1px solid rgba(134, 239, 172, 0.45);
+  color: #86efac;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(74, 222, 128, 0.2);
+}
+.link-card:hover .icon-bicho {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 6px 20px rgba(74, 222, 128, 0.4);
+  border-color: rgba(134, 239, 172, 0.7);
+}
+
+/* 5. Petz - Azul celeste com toque quente */
+.icon-petz {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.3) 0%, rgba(251, 191, 36, 0.18) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: #7dd3fc;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(56, 189, 248, 0.2);
+}
+.link-card:hover .icon-petz {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 6px 20px rgba(56, 189, 248, 0.4);
+  border-color: rgba(56, 189, 248, 0.7);
+}
+
+/* 6. Shopee - Laranja suave com brilho quente */
+.icon-shopee {
+  background: linear-gradient(135deg, rgba(238, 77, 45, 0.35) 0%, rgba(255, 107, 74, 0.2) 100%);
+  border: 1px solid rgba(238, 77, 45, 0.5);
+  color: #ff9177;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(238, 77, 45, 0.22);
+}
+.link-card-small:hover .icon-shopee {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 6px 20px rgba(238, 77, 45, 0.4);
+  border-color: rgba(238, 77, 45, 0.75);
+}
+
+/* 7. Mercado Livre - Amarelo ouro sutil */
+.icon-mercadolivre {
+  background: linear-gradient(135deg, rgba(255, 230, 0, 0.32) 0%, rgba(234, 179, 8, 0.16) 100%);
+  border: 1px solid rgba(255, 230, 0, 0.45);
+  color: #fef08a;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(255, 230, 0, 0.2);
+}
+.link-card-small:hover .icon-mercadolivre {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 6px 20px rgba(255, 230, 0, 0.35);
+  border-color: rgba(255, 230, 0, 0.7);
 }
 
 .link-content {

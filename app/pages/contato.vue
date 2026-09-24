@@ -21,6 +21,7 @@ useSeoMeta({
     <ContactSection />
 
     <section class="logistics-section section reveal">
+      <AmbientPawsTrail species="cat" variant="diagonal-up" :opacity="0.05" />
       <div class="container">
         <div class="section-header text-center">
           <h2 class="section-title">Locais de <span>Atendimento</span></h2>
@@ -28,26 +29,56 @@ useSeoMeta({
         </div>
 
         <div class="logistics-grid">
-          <AppCard class="logistics-card">
-            <Icon name="ph:house-fill" />
+          <AppCard class="logistics-card" :hover="true">
+            <Icon name="ph:house-fill" class="card-main-icon" />
             <h4>Modalidade Domiciliar (Volante)</h4>
             <p>Conforto e menos estresse para o animal, atendendo diretamente na sua residência.</p>
-            <ul>
-              <li>São Paulo (Foco na Zona Leste)</li>
-              <li>Região do Vale do Paraíba / Alto Tietê</li>
+            <ul class="card-details-list">
+              <li>
+                <Icon name="ph:map-pin-fill" class="detail-icon" />
+                <span>São Paulo (Foco na Zona Leste)</span>
+              </li>
+              <li>
+                <Icon name="ph:map-pin-fill" class="detail-icon" />
+                <span>Região do Vale do Paraíba / Alto Tietê</span>
+              </li>
             </ul>
           </AppCard>
 
-          <AppCard class="logistics-card">
-            <Icon name="ph:hospital-fill" />
-            <h4>Clínicas Parceiras</h4>
-            <p>Atendimento em infraestrutura completa de clínicas veterinárias parceiras nas mesmas regiões.</p>
+          <AppCard class="logistics-card" :hover="true">
+            <Icon name="ph:first-aid-kit-fill" class="card-main-icon" />
+            <h4>Fisio Care Pet</h4>
+            <p>Atendimento presencial em infraestrutura completa de reabilitação e fisioterapia veterinária na Zona Leste de SP.</p>
+            <ul class="card-details-list">
+              <li>
+                <Icon name="ph:map-pin-fill" class="detail-icon" />
+                <span>Rua Alonso Calhamares, 363 — Penha, SP</span>
+              </li>
+              <li>
+                <Icon name="ph:phone-fill" class="detail-icon" />
+                <span>(11) 99591-1206 / (11) 95303-1449</span>
+              </li>
+              <li>
+                <Icon name="ph:globe-fill" class="detail-icon" />
+                <a href="https://fisiocarepet.com.br" target="_blank" rel="noopener">fisiocarepet.com.br</a>
+              </li>
+            </ul>
           </AppCard>
 
-          <AppCard class="logistics-card">
-            <Icon name="ph:monitor-fill" />
+          <AppCard class="logistics-card" :hover="true">
+            <Icon name="ph:monitor-fill" class="card-main-icon" />
             <h4>Consultoria Online</h4>
             <p>Especializada para a área de comportamento, permitindo suporte a tutores em qualquer localização.</p>
+            <ul class="card-details-list">
+              <li>
+                <Icon name="ph:video-camera-fill" class="detail-icon" />
+                <span>Atendimento remoto por videochamada</span>
+              </li>
+              <li>
+                <Icon name="ph:globe-hemisphere-west-fill" class="detail-icon" />
+                <span>Suporte a tutores em qualquer localização</span>
+              </li>
+            </ul>
           </AppCard>
         </div>
       </div>
@@ -56,11 +87,23 @@ useSeoMeta({
 </template>
 
 <style scoped>
+.logistics-section {
+  position: relative;
+  background-color: var(--color-bg-warm);
+  overflow: hidden;
+}
+
+.logistics-section .container {
+  position: relative;
+  z-index: 2;
+}
+
 .logistics-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 4rem;
+  align-items: stretch;
 }
 
 .logistics-card {
@@ -68,38 +111,69 @@ useSeoMeta({
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
-.logistics-card .iconify {
+.logistics-card .card-main-icon {
   font-size: 3rem;
   color: var(--color-accent);
   margin-bottom: 1.5rem;
+  display: inline-flex;
 }
 
 .logistics-card h4 {
   margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
-.logistics-card ul {
-  text-align: left;
-  margin-top: 1rem;
-  font-size: 0.875rem;
+.logistics-card p {
   color: var(--color-text-light);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.card-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  text-align: left;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px dashed rgba(185, 116, 98, 0.2);
 }
 
-.logistics-card li {
+.card-details-list li {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  line-height: 1.45;
 }
 
-.logistics-card li::before {
-  content: '•';
+.card-details-list .detail-icon {
+  font-size: 1.15rem;
   color: var(--color-accent);
-  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.card-details-list a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+  transition: color 0.2s ease;
+}
+
+.card-details-list a:hover {
+  color: var(--color-accent);
 }
 
 @media (max-width: 1024px) {

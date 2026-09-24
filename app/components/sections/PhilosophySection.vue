@@ -22,7 +22,7 @@
         
         <div class="philosophy-features">
           <div class="feature-item">
-            <Icon name="ph:heart-beat-fill" class="feature-icon" />
+            <Icon name="ph:heartbeat-fill" class="feature-icon" />
             <div>
               <h4>Saúde Física</h4>
               <p>Reabilitação, controle de dor e fortalecimento muscular.</p>

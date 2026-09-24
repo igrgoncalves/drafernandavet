@@ -1,5 +1,6 @@
 <template>
   <section class="arsenal-section section" id="arsenal">
+    <AmbientPawsTrail :opacity="0.07" />
     <div class="container">
       <div class="section-header text-center">
         <h2 class="section-title">Nosso <span>Arsenal Terapêutico</span></h2>
@@ -76,7 +77,14 @@ const therapies = [
 
 <style scoped>
 .arsenal-section {
-  background-color: var(--color-white);
+  position: relative;
+  background-color: var(--color-bg-warm);
+  overflow: hidden;
+}
+
+.arsenal-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 .therapies-grid {

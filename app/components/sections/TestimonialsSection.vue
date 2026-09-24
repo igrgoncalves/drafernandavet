@@ -97,7 +97,8 @@ const testimonials = [
 }
 
 .success-case {
-  background: var(--color-bg);
+  background: var(--color-bg-warm);
+  border: 1px solid var(--color-border);
   border-radius: 30px;
   overflow: hidden;
   display: grid;

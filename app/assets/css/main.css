@@ -10,8 +10,10 @@
     Confirmed as official palette on 04/05/2026
   */
   --color-bg: #fffaf9;
+  --color-bg-warm: #f7ede8;       /* Warm Rose Tint for alternating rhythm */
   --color-white: #ffffff;
   --color-primary: #721e12;       /* Burgundy */
+  --color-primary-dark: #4d130a;  /* Deep Burgundy for Footer & Contrast sections */
   --color-primary-light: #96493a;
   --color-accent: #b97462;        /* Deep Rose */
   --color-accent-light: #dc9f89;
@@ -107,6 +109,14 @@ p {
 
 .section {
   padding: var(--section-padding) 0;
+}
+
+.section-warm {
+  background-color: var(--color-bg-warm);
+}
+
+.section-white {
+  background-color: var(--color-white);
 }
 
 /* Utilities */

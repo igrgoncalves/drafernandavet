@@ -1,5 +1,6 @@
 <template>
   <section class="faq-section section">
+    <AmbientPawsTrail :opacity="0.07" />
     <div class="container">
       <div class="section-header text-center reveal">
         <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
@@ -21,8 +22,11 @@
       </div>
       
       <div class="faq-cta text-center reveal">
-        <p>Ainda tem dúvidas? Estamos aqui para ajudar.</p>
-        <AppButton href="https://wa.me/5511966176405" target="_blank" variant="outline">Chamar no WhatsApp</AppButton>
+        <p>Ainda tem dúvidas ou deseja agendar uma avaliação para o seu animal?</p>
+        <div class="faq-cta-actions">
+          <AppButton to="/contato" variant="primary">Agendar Consulta</AppButton>
+          <AppButton href="https://wa.me/5511966176405" target="_blank" variant="outline">Falar no WhatsApp</AppButton>
+        </div>
       </div>
     </div>
   </section>
@@ -61,7 +65,14 @@ const faqs = [
 
 <style scoped>
 .faq-section {
-  background-color: var(--color-bg);
+  position: relative;
+  background-color: var(--color-bg-warm);
+  overflow: hidden;
+}
+
+.faq-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 .faq-accordion {
@@ -136,5 +147,15 @@ const faqs = [
 .faq-cta p {
   margin-bottom: 1.5rem;
   font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.faq-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 </style>

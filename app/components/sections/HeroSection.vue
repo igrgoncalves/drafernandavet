@@ -1,5 +1,6 @@
 <template>
   <section class="hero-section">
+    <AmbientPawsTrail :opacity="0.07" />
     <div class="container hero-container">
       <div class="hero-content reveal">
         <span class="badge">Medicina Veterinária Integrativa</span>
@@ -76,12 +77,15 @@ onUnmounted(() => {
 
 <style scoped>
 .hero-section {
+  position: relative;
   padding: 10rem 0 5rem;
   background: linear-gradient(135deg, #fdfbf7 0%, #f5f1e8 100%);
   overflow: hidden;
 }
 
 .hero-container {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
@@ -125,6 +129,63 @@ p {
 .hero-actions {
   display: flex;
   gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Quick Access Chips */
+.hero-quick-access {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.quick-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  color: var(--color-accent);
+}
+
+.quick-chips {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.quick-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(114, 30, 18, 0.15);
+  border-radius: 50px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.quick-chip .iconify {
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  transition: var(--transition-smooth);
+}
+
+.quick-chip:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.quick-chip:hover .iconify {
+  color: var(--color-white);
 }
 
 /* Slider Logic */

@@ -1,11 +1,22 @@
 <script setup>
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
+const isServicesOpen = ref(false)
 
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Sobre', path: '/sobre' },
-  { name: 'Serviços', path: '/servicos' },
+  { 
+    name: 'Serviços', 
+    path: '/servicos',
+    hasDropdown: true,
+    children: [
+      { name: 'Pequenos Animais', path: '/servicos/pequenos-animais', icon: 'ph:paw-print-fill', desc: 'Cães e Gatos' },
+      { name: 'Cães Atletas', path: '/servicos/caes-atletas', icon: 'ph:lightning-fill', desc: 'Performance e Prevenção' },
+      { name: 'Equinos', path: '/servicos/equinos', icon: 'ph:horse-fill', desc: 'Esporte e Reprodução' },
+      { name: 'Visão Geral dos Serviços', path: '/servicos', icon: 'ph:squares-four-fill', desc: 'Terapias e Avaliação' }
+    ]
+  },
   { name: 'Blog', path: '/blog' },
   { name: 'Contato', path: '/contato' }
 ]
@@ -40,16 +51,56 @@ const toggleMenu = () => {
         <!-- Desktop Nav -->
         <nav class="desktop-nav">
           <div class="nav-links-wrapper">
-            <NuxtLink 
-              v-for="link in navLinks" 
-              :key="link.path" 
-              :to="link.path"
-              class="nav-link"
-              active-class="active"
-            >
-              {{ link.name }}
-              <span class="underline"></span>
-            </NuxtLink>
+            <template v-for="link in navLinks" :key="link.path">
+              <!-- Item com Dropdown -->
+              <div 
+                v-if="link.hasDropdown" 
+                class="nav-item-dropdown"
+                @mouseenter="isServicesOpen = true"
+                @mouseleave="isServicesOpen = false"
+              >
+                <NuxtLink 
+                  :to="link.path"
+                  class="nav-link dropdown-trigger"
+                  active-class="active"
+                >
+                  <span>{{ link.name }}</span>
+                  <Icon name="ph:caret-down-bold" class="dropdown-caret" />
+                  <span class="underline"></span>
+                </NuxtLink>
+
+                <!-- Dropdown Menu -->
+                <Transition name="dropdown-fade">
+                  <div v-show="isServicesOpen" class="dropdown-menu">
+                    <NuxtLink 
+                      v-for="sub in link.children" 
+                      :key="sub.path" 
+                      :to="sub.path"
+                      class="dropdown-item"
+                    >
+                      <div class="dropdown-item-icon">
+                        <Icon :name="sub.icon" />
+                      </div>
+                      <div class="dropdown-item-text">
+                        <span class="dropdown-item-title">{{ sub.name }}</span>
+                        <span class="dropdown-item-desc">{{ sub.desc }}</span>
+                      </div>
+                    </NuxtLink>
+                  </div>
+                </Transition>
+              </div>
+
+              <!-- Link Normal -->
+              <NuxtLink 
+                v-else
+                :to="link.path"
+                class="nav-link"
+                active-class="active"
+              >
+                {{ link.name }}
+                <span class="underline"></span>
+              </NuxtLink>
+            </template>
           </div>
           <div class="nav-actions">
             <AppButton to="/contato" size="sm" variant="primary" class="cta-btn">Agendar</AppButton>
@@ -71,16 +122,30 @@ const toggleMenu = () => {
         <Transition name="overlay">
           <div v-if="isMenuOpen" class="mobile-nav-overlay" @click="toggleMenu">
             <nav class="mobile-nav-content" @click.stop>
-              <NuxtLink 
-                v-for="link in navLinks" 
-                :key="link.path" 
-                :to="link.path"
-                class="mobile-nav-link"
-                active-class="active"
-                @click="toggleMenu"
-              >
-                {{ link.name }}
-              </NuxtLink>
+              <template v-for="link in navLinks" :key="link.path">
+                <NuxtLink 
+                  :to="link.path"
+                  class="mobile-nav-link"
+                  active-class="active"
+                  @click="toggleMenu"
+                >
+                  {{ link.name }}
+                </NuxtLink>
+                <!-- Sublinks no Mobile -->
+                <div v-if="link.hasDropdown" class="mobile-sublinks">
+                  <NuxtLink 
+                    v-for="sub in link.children.slice(0, 3)" 
+                    :key="sub.path" 
+                    :to="sub.path"
+                    class="mobile-sublink"
+                    active-class="active"
+                    @click="toggleMenu"
+                  >
+                    <Icon :name="sub.icon" />
+                    <span>{{ sub.name }}</span>
+                  </NuxtLink>
+                </div>
+              </template>
               <AppButton to="/contato" variant="primary" size="lg" @click="toggleMenu">Agendar Consulta</AppButton>
             </nav>
           </div>
@@ -202,6 +267,136 @@ const toggleMenu = () => {
 .nav-link:hover .underline,
 .nav-link.active .underline {
   width: 100%;
+}
+
+/* Dropdown Menu Desktop */
+.nav-item-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dropdown-caret {
+  font-size: 0.75rem;
+  transition: var(--transition-smooth);
+}
+
+.nav-item-dropdown:hover .dropdown-caret {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(114, 30, 18, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem;
+  min-width: 270px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 100;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.dropdown-item:hover {
+  background: rgba(185, 116, 98, 0.08);
+  transform: translateX(3px);
+}
+
+.dropdown-item-icon {
+  width: 34px;
+  height: 34px;
+  background: rgba(114, 30, 18, 0.08);
+  color: var(--color-primary);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.dropdown-item:hover .dropdown-item-icon {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.dropdown-item-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-item-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.dropdown-item-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: 0.15rem;
+}
+
+.dropdown-fade-enter-active, .dropdown-fade-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dropdown-fade-enter-from, .dropdown-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+}
+
+/* Mobile Sublinks */
+.mobile-sublinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: rgba(114, 30, 18, 0.04);
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 280px;
+}
+
+.mobile-sublink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.mobile-sublink .iconify {
+  font-size: 1.2rem;
+  color: var(--color-accent);
 }
 
 /* Mobile Toggle */
