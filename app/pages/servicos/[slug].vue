@@ -342,6 +342,28 @@ const otherServices = computed(() => {
   return all.filter(s => s.slug !== slug.value)
 })
 
+const activeSignDot = ref(0)
+const activeStepDot = ref(0)
+const activeTreatmentDot = ref(0)
+
+const onGridScroll = (e, targetRef, count) => {
+  const el = e.target
+  const card = el.firstElementChild
+  if (!card) return
+  const cardWidth = card.offsetWidth + 16
+  const idx = Math.round(el.scrollLeft / cardWidth)
+  targetRef.value = Math.max(0, Math.min(count - 1, idx))
+}
+
+const scrollToGridIndex = (containerSelector, index) => {
+  const container = document.querySelector(containerSelector)
+  if (!container) return
+  const cards = container.children
+  if (cards[index]) {
+    cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+  }
+}
+
 useSeoMeta({
   title: computed(() => `${service.value.rawTitle} | Dra. Fernanda Moreno - Medicina Integrativa`),
   description: computed(() => service.value.desc)
@@ -375,7 +397,10 @@ useSeoMeta({
             <p class="section-desc">{{ service.silentPain.intro }}</p>
           </div>
 
-          <div class="signs-grid">
+          <div 
+            class="signs-grid"
+            @scroll.passive="(e) => onGridScroll(e, activeSignDot, service.silentPain.signs.length)"
+          >
             <div 
               v-for="(sign, idx) in service.silentPain.signs" 
               :key="idx" 
@@ -389,6 +414,17 @@ useSeoMeta({
                 <p>{{ sign.desc }}</p>
               </div>
             </div>
+          </div>
+
+          <div class="carousel-dots" aria-hidden="true">
+            <button
+              v-for="(_, idx) in service.silentPain.signs"
+              :key="idx"
+              class="carousel-dot"
+              :class="{ active: activeSignDot === idx }"
+              @click="scrollToGridIndex('.signs-grid', idx)"
+              :aria-label="`Ir para slide ${idx + 1}`"
+            />
           </div>
         </div>
       </section>
@@ -417,7 +453,10 @@ useSeoMeta({
             <p class="section-desc">{{ service.methodology.subtitle }}</p>
           </div>
 
-          <div class="method-steps-grid">
+          <div 
+            class="method-steps-grid"
+            @scroll.passive="(e) => onGridScroll(e, activeStepDot, service.methodology.steps.length)"
+          >
             <div 
               v-for="step in service.methodology.steps" 
               :key="step.number" 
@@ -427,6 +466,17 @@ useSeoMeta({
               <h3>{{ step.title }}</h3>
               <p>{{ step.desc }}</p>
             </div>
+          </div>
+
+          <div class="carousel-dots" aria-hidden="true">
+            <button
+              v-for="(_, idx) in service.methodology.steps"
+              :key="idx"
+              class="carousel-dot"
+              :class="{ active: activeStepDot === idx }"
+              @click="scrollToGridIndex('.method-steps-grid', idx)"
+              :aria-label="`Ir para etapa ${idx + 1}`"
+            />
           </div>
         </div>
       </section>
@@ -445,7 +495,10 @@ useSeoMeta({
             <p class="section-desc">{{ service.specificTreatments.subtitle }}</p>
           </div>
 
-          <div class="treatments-grid">
+          <div 
+            class="treatments-grid"
+            @scroll.passive="(e) => onGridScroll(e, activeTreatmentDot, service.specificTreatments.items.length)"
+          >
             <div 
               v-for="(t, i) in service.specificTreatments.items" 
               :key="i" 
@@ -459,6 +512,17 @@ useSeoMeta({
                 <p>{{ t.desc }}</p>
               </div>
             </div>
+          </div>
+
+          <div class="carousel-dots" aria-hidden="true">
+            <button
+              v-for="(_, idx) in service.specificTreatments.items"
+              :key="idx"
+              class="carousel-dot"
+              :class="{ active: activeTreatmentDot === idx }"
+              @click="scrollToGridIndex('.treatments-grid', idx)"
+              :aria-label="`Ir para tratamento ${idx + 1}`"
+            />
           </div>
         </div>
       </section>
@@ -995,6 +1059,10 @@ useSeoMeta({
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+.carousel-dots {
+  display: none;
+}
+
 /* Responsividade */
 @media (max-width: 1024px) {
   .signs-grid {
@@ -1015,8 +1083,124 @@ useSeoMeta({
 }
 
 @media (max-width: 768px) {
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.25rem;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(114, 30, 18, 0.2);
+    border: none;
+    padding: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .carousel-dot.active {
+    width: 22px;
+    border-radius: 10px;
+    background: var(--color-primary);
+  }
+
+  /* 1. Sinais de Dor: Carrossel Snap */
   .signs-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem 1rem;
+    margin: 0 -1.5rem;
+    scrollbar-width: none;
+  }
+
+  .signs-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sign-card {
+    flex: 0 0 82%;
+    max-width: 82%;
+    scroll-snap-align: center;
+    padding: 1.75rem 1.5rem;
+  }
+
+  /* 2. Metodologia: Carrossel Snap */
+  .method-steps-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem 1rem;
+    margin: 0 -1.5rem;
+    scrollbar-width: none;
+  }
+
+  .method-steps-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step-card {
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  /* 3. Tratamentos: Carrossel Snap */
+  .treatments-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem 1rem;
+    margin: 0 -1.5rem;
+    scrollbar-width: none;
+  }
+
+  .treatments-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .treatment-card {
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    padding: 1.75rem 1.5rem;
+    flex-direction: row;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  /* 4. Outras Especialidades: Carrossel Snap */
+  .other-services-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem 1rem;
+    margin: 0 -1.5rem;
+    scrollbar-width: none;
+  }
+
+  .other-services-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .other-service-card {
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    padding: 1.5rem;
   }
 
   .cta-banner {
@@ -1030,11 +1214,6 @@ useSeoMeta({
 
   .cta-actions :deep(.app-button) {
     width: 100%;
-  }
-
-  .treatment-card {
-    flex-direction: column;
-    gap: 1rem;
   }
 }
 </style>

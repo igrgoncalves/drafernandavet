@@ -103,7 +103,8 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   padding: 2rem;
 }
@@ -114,13 +115,14 @@ onMounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(25rem, 80vw, 50rem);
+  font-size: clamp(15rem, 50vw, 45rem);
   font-weight: 900;
   color: var(--color-primary);
-  opacity: 0.05;
+  opacity: 0.04;
   line-height: 1;
   letter-spacing: -0.05em;
   user-select: none;
+  pointer-events: none;
   z-index: 0;
   white-space: nowrap;
 }
@@ -141,13 +143,17 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .animals-orchestra {
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   gap: 3rem;
   position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 .animal-stage {
@@ -179,12 +185,13 @@ onMounted(() => {
   color: var(--color-accent);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.65);
   padding: 0.4rem 1rem;
   border-radius: 50px;
   backdrop-filter: blur(5px);
   border: 1px solid rgba(185, 116, 98, 0.2);
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  white-space: nowrap;
 }
 
 /* Tears */
@@ -224,18 +231,19 @@ onMounted(() => {
 .content-side {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.5rem;
 }
 
 .main-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
   color: var(--color-primary);
   margin-bottom: 1.25rem;
-  line-height: 1;
+  line-height: 1.1;
+  font-weight: 700;
 }
 
 .sub-message {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--color-text-light);
   max-width: 500px;
   line-height: 1.6;
@@ -247,6 +255,7 @@ onMounted(() => {
   flex-direction: column;
   gap: 1.25rem;
   max-width: 400px;
+  width: 100%;
 }
 
 .timer-header {
@@ -287,17 +296,18 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 1rem;
   background-color: var(--color-primary);
   color: white;
-  padding: 1.5rem 3rem;
+  padding: 1.25rem 2.5rem;
   border-radius: 100px;
   border: none;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 15px 40px rgba(114, 30, 18, 0.25);
+  max-width: 100%;
 }
 
 .action-button:hover {
@@ -321,22 +331,161 @@ onMounted(() => {
   font-size: 3.5rem;
 }
 
-/* Mobile Layout */
+/* Responsive: Tablets (<= 1024px) */
 @media (max-width: 1024px) {
+  .error-page {
+    padding: 3rem 1.5rem;
+    height: auto;
+    min-height: 100vh;
+  }
+
   .error-grid {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 4rem;
+    gap: 3.5rem;
   }
   
   .visual-side { order: 1; }
-  .content-side { order: 2; align-items: center; }
+  .content-side { 
+    order: 2; 
+    align-items: center; 
+    text-align: center;
+    gap: 2rem;
+  }
   
-  .animals-orchestra { gap: 1.5rem; }
-  .animal-stage.horse .animal-full { font-size: 11rem; }
-  .animal-stage.cat .animal-full { font-size: 6.5rem; }
-  .animal-stage.dog .animal-full { font-size: 8.5rem; }
-  
-  .massive-bg-404 { font-size: 30rem; }
+  .animals-orchestra { 
+    gap: 1.5rem; 
+  }
+
+  .animal-stage.horse .animal-full { font-size: 9rem; }
+  .animal-stage.cat .animal-full { font-size: 5.5rem; }
+  .animal-stage.dog .animal-full { font-size: 7rem; }
+
+  .sub-message {
+    margin: 0 auto;
+  }
+
+  .timer-orchestra {
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .timer-header {
+    justify-content: center;
+  }
+
+  .actions-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Responsive: Mobile Screens (<= 640px) */
+@media (max-width: 640px) {
+  .error-page {
+    padding: 2.5rem 1.25rem 3rem;
+    justify-content: flex-start;
+  }
+
+  .error-grid {
+    gap: 2rem;
+  }
+
+  .animals-orchestra {
+    gap: clamp(0.5rem, 3vw, 1.25rem);
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .animal-stage.horse .animal-full { font-size: clamp(4.5rem, 18vw, 6.5rem); }
+  .animal-stage.dog .animal-full { font-size: clamp(3.5rem, 14vw, 5rem); }
+  .animal-stage.cat .animal-full { font-size: clamp(2.6rem, 10vw, 3.8rem); }
+
+  .animal-speech {
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    letter-spacing: 0.05em;
+  }
+
+  .tear {
+    width: 8px;
+    height: 12px;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    20% { opacity: 1; transform: translateY(8px) scale(1); }
+    100% { transform: translateY(50px) scale(0.4); opacity: 0; }
+  }
+
+  .content-side {
+    gap: 1.75rem;
+    width: 100%;
+  }
+
+  .main-title {
+    font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .sub-message {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+  }
+
+  .timer-orchestra {
+    max-width: 320px;
+    gap: 0.75rem;
+  }
+
+  .timer-header {
+    gap: 0.6rem;
+  }
+
+  .timer-label {
+    font-size: 0.95rem;
+  }
+
+  .timer-subtext {
+    font-size: 0.8rem;
+  }
+
+  .action-button {
+    width: 100%;
+    max-width: 320px;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    gap: 0.75rem;
+    box-shadow: 0 10px 25px rgba(114, 30, 18, 0.2);
+  }
+
+  .action-button:hover {
+    transform: none;
+  }
+
+  .massive-bg-404 {
+    font-size: clamp(8rem, 30vw, 14rem);
+    opacity: 0.03;
+  }
+}
+
+/* Extra Small Phones (<= 380px) */
+@media (max-width: 380px) {
+  .animals-orchestra {
+    gap: 0.35rem;
+  }
+
+  .animal-stage.horse .animal-full { font-size: 4rem; }
+  .animal-stage.dog .animal-full { font-size: 3.2rem; }
+  .animal-stage.cat .animal-full { font-size: 2.3rem; }
+
+  .animal-speech {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.45rem;
+  }
 }
 </style>

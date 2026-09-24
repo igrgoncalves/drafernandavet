@@ -6,7 +6,11 @@
         <p class="section-desc">Histórias de superação e bem-estar através da medicina integrativa.</p>
       </div>
 
-      <div class="testimonials-grid">
+      <div 
+        ref="scrollContainer"
+        class="testimonials-grid"
+        @scroll.passive="onScroll"
+      >
         <AppCard v-for="t in testimonials" :key="t.author" class="testimonial-card reveal">
           <div class="quote-icon"><Icon name="ph:quotes-fill" /></div>
           <p class="quote-text">{{ t.text }}</p>
@@ -15,6 +19,18 @@
             <span>{{ t.pet }}</span>
           </div>
         </AppCard>
+      </div>
+
+      <!-- Mobile Dots Indicator -->
+      <div class="carousel-dots" aria-hidden="true">
+        <button
+          v-for="(t, idx) in testimonials"
+          :key="idx"
+          class="carousel-dot"
+          :class="{ active: activeDot === idx }"
+          @click="scrollToIndex(idx)"
+          :aria-label="`Depoimento de ${t.author}`"
+        />
       </div>
 
       <div class="success-case reveal">
@@ -52,6 +68,29 @@ const testimonials = [
     pet: "Tutora de Gatos"
   }
 ]
+
+const scrollContainer = ref(null)
+const activeDot = ref(0)
+
+const onScroll = () => {
+  if (!scrollContainer.value) return
+  const el = scrollContainer.value
+  const card = el.querySelector('.testimonial-card')
+  if (!card) return
+  const cardWidth = card.offsetWidth + 16
+  const index = Math.round(el.scrollLeft / cardWidth)
+  activeDot.value = Math.max(0, Math.min(testimonials.length - 1, index))
+}
+
+const scrollToIndex = (index) => {
+  if (!scrollContainer.value) return
+  const el = scrollContainer.value
+  const cards = el.querySelectorAll('.testimonial-card')
+  if (cards[index]) {
+    cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+    activeDot.value = index
+  }
+}
 </script>
 
 <style scoped>
@@ -133,6 +172,10 @@ const testimonials = [
   min-height: 400px;
 }
 
+.carousel-dots {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
@@ -145,6 +188,72 @@ const testimonials = [
   }
   .case-content {
     padding: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1.5rem 1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    scrollbar-width: none;
+  }
+
+  .testimonials-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonial-card {
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    padding: 1.75rem 1.5rem;
+  }
+
+  .quote-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .quote-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(114, 30, 18, 0.2);
+    border: none;
+    padding: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .carousel-dot.active {
+    width: 22px;
+    border-radius: 10px;
+    background: var(--color-primary);
+  }
+
+  .case-content {
+    padding: 2rem 1.5rem;
   }
 }
 </style>

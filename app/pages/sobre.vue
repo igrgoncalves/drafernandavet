@@ -699,4 +699,54 @@ const journeySteps = [
     margin: 0 auto;
   }
 }
+
+@media (max-width: 768px) {
+  /* Pilares da Medicina Integrativa: Carrossel Snap */
+  .pillars-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 1.25rem 0.5rem;
+    scrollbar-width: none;
+  }
+
+  .pillars-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pillar-item {
+    flex: 0 0 82%;
+    max-width: 82%;
+    scroll-snap-align: center;
+    background: var(--color-bg);
+    padding: 1.5rem;
+    border-radius: 18px;
+    border: 1px solid var(--color-border);
+  }
+
+  /* Fundamento Acadêmico: Carrossel Snap */
+  .academic-modern-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem 1rem;
+    margin: 0 -1.5rem;
+    scrollbar-width: none;
+  }
+
+  .academic-modern-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .academic-card {
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    padding: 1.5rem;
+  }
+}
 </style>

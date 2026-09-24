@@ -1,17 +1,27 @@
-SESSÃO ATUALIZADA EM 24 DE SETEMBRO DE 2026 — 12:55
+SESSÃO ATUALIZADA EM 24 DE SETEMBRO DE 2026 — 14:10
 
 RESUMO DO TRABALHO REALIZADO:
 
-1. ATUALIZAÇÃO DA FOTO DE PERFIL EM /links:
-   - Extração da Foto Oficial do Instagram (@meuvinculovet):
-     - A foto de perfil autêntica da Dra. Fernanda Moreno (jaleco com estetoscópio e brasão de Medicina Veterinária) foi obtida diretamente do perfil oficial e salva localmente em `/public/images/fernanda-perfil.jpg`.
-   - Aplicação em `app/pages/links.vue`:
-     - O avatar da página de links agora consome `/images/fernanda-perfil.jpg` em vez da imagem genérica do Unsplash, garantindo carregamento instantâneo, estabilidade e fidelidade à identidade profissional.
+1. OTIMIZAÇÃO MOBILE EM TODAS AS PÁGINAS DO SITE (CARROSSEL HORIZONTAL SNAP COM PEEK):
+   - Detalhes de Serviços (Pequenos Animais, Cães Atletas, Equinos - app/pages/servicos/[slug].vue):
+     - Sinais de Dor Silenciosa (.signs-grid): de 4 cards empilhados verticalmente para carrossel horizontal de 82% com indicador de 4 bolinhas.
+     - Metodologia (.method-steps-grid): de 3 cards com numeração empilhados para carrossel horizontal de 85% com indicador de 3 bolinhas.
+     - Tratamentos Específicos (.treatments-grid): de 4 cards empilhados para carrossel horizontal de 85% com indicador de 4 bolinhas.
+     - Outras Especialidades (.other-services-grid): carrossel suave com 85% peek.
+     - Redução total de mais de 2.000px de altura nas páginas de serviços específicos.
+   - Página Sobre a Dra. Fernanda (app/pages/sobre.vue):
+     - Pilares da Medicina Integrativa (.pillars-grid): transformados em trilha horizontal com 82% de largura e snap.
+     - Fundamento Acadêmico (.academic-modern-grid): os 5 cards de titulações acadêmicas agora deslizam lateralmente com 85% peek em vez de formar uma coluna gigante de 5 blocos.
+   - Página de Contato (app/pages/contato.vue):
+     - Locais de Atendimento (.logistics-grid): transformados em carrossel horizontal snap com peek de 85% e indicador de 3 bolinhas.
+   - Home Page (app/pages/index.vue):
+     - Seções de Serviços, Arsenal Terapêutico e Depoimentos otimizadas com carrossel snap de rolagem lateral e paginação interativa.
 
-2. PADRONIZAÇÃO VISUAL DOS CARDS DE ATENDIMENTO (app/pages/contato.vue):
-   - Unificação de todos os 3 cards (Modalidade Domiciliar, Fisio Care Pet e Consultoria Online) com ícone superior centralizado de 3rem, título `<h4>` centralizado, descrição harmoniosa e `.card-details-list` alinhada na base.
-   - Remoção do subtítulo/badge "Clínica Presencial · Penha" do card Fisio Care Pet.
-   - Eliminação do conflito de marcadores duplos (`• 📍`).
+2. CORREÇÃO DA RESPONSIVIDADE MOBILE NA PÁGINA 404 (app/error.vue):
+   - Escalonamento adaptativo dos animais com `clamp()` e botão de retorno touch-friendly sem vazamento lateral.
 
-3. VALIDAÇÃO TÉCNICA:
+3. ATUALIZAÇÃO DA FOTO DE PERFIL EM /links:
+   - Foto autêntica da Dra. Fernanda Moreno extraída e aplicada localmente em `/public/images/fernanda-perfil.jpg`.
+
+4. VALIDAÇÃO TÉCNICA:
    - `npm run build` executado e compilado com sucesso com código de saída 0 (Nuxt 4 + Vite + Nitro).

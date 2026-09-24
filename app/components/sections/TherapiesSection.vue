@@ -7,7 +7,11 @@
         <p class="section-desc">Protocolos individualizados utilizando o que há de mais moderno na medicina integrativa para controle de dor e reabilitação.</p>
       </div>
 
-      <div class="therapies-grid">
+      <div 
+        ref="scrollContainer"
+        class="therapies-grid"
+        @scroll.passive="onScroll"
+      >
         <AppCard v-for="t in therapies" :key="t.name" hover class="therapy-modern-card">
           <div class="therapy-header">
             <div class="therapy-icon-box">
@@ -23,6 +27,18 @@
             </div>
           </div>
         </AppCard>
+      </div>
+
+      <!-- Mobile Dots Indicator -->
+      <div class="carousel-dots" aria-hidden="true">
+        <button
+          v-for="(t, idx) in therapies"
+          :key="idx"
+          class="carousel-dot"
+          :class="{ active: activeDot === idx }"
+          @click="scrollToIndex(idx)"
+          :aria-label="`Ir para ${t.name}`"
+        />
       </div>
     </div>
   </section>
@@ -73,6 +89,29 @@ const therapies = [
     function: 'Analgesia profunda e estímulo de nervos periféricos.'
   }
 ]
+
+const scrollContainer = ref(null)
+const activeDot = ref(0)
+
+const onScroll = () => {
+  if (!scrollContainer.value) return
+  const el = scrollContainer.value
+  const card = el.querySelector('.therapy-modern-card')
+  if (!card) return
+  const cardWidth = card.offsetWidth + 16
+  const index = Math.round(el.scrollLeft / cardWidth)
+  activeDot.value = Math.max(0, Math.min(therapies.length - 1, index))
+}
+
+const scrollToIndex = (index) => {
+  if (!scrollContainer.value) return
+  const el = scrollContainer.value
+  const cards = el.querySelectorAll('.therapy-modern-card')
+  if (cards[index]) {
+    cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+    activeDot.value = index
+  }
+}
 </script>
 
 <style scoped>
@@ -159,5 +198,84 @@ const therapies = [
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-primary);
+}
+
+.carousel-dots {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .therapies-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 0.5rem 1.5rem 1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    scrollbar-width: none;
+  }
+
+  .therapies-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .therapy-modern-card {
+    flex: 0 0 82%;
+    max-width: 82%;
+    scroll-snap-align: center;
+    padding: 1.5rem;
+  }
+
+  .therapy-header {
+    margin-bottom: 1rem;
+  }
+
+  .therapy-icon-box {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+  }
+
+  .therapy-header h4 {
+    font-size: 1.15rem;
+  }
+
+  .therapy-desc {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(114, 30, 18, 0.2);
+    border: none;
+    padding: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .carousel-dot.active {
+    width: 20px;
+    border-radius: 10px;
+    background: var(--color-primary);
+  }
 }
 </style>
