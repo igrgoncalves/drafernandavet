@@ -25,7 +25,7 @@ const services = [
     title: 'Equinos',
     slug: 'equinos',
     icon: 'ph:horse-fill',
-    desc: 'Reabilitação de lesões, preparo físico e otimização do rendimento reprodutivo em cavalos de esporte, trabalho e criação.'
+    desc: 'Acupuntura e fisioterapia para equinos em geral. Alívio de dores silenciosas, melhora da fertilidade da égua, qualidade do sêmen do garanhão e vitalidade no trabalho.'
   }
 ]
 

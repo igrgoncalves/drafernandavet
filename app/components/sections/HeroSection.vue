@@ -55,10 +55,10 @@ const slides = [
   },
   {
     id: 2,
-    title: 'Performance e Bem-estar para <span>Equinos Atletas</span>',
-    description: 'Medicina integrativa aplicada ao esporte e reprodução, focando em reabilitação de lesões e otimização do rendimento físico.',
+    title: 'Bem-estar e Saúde para <span>Equinos e Criação</span>',
+    description: 'Fisioterapia e acupuntura para equinos em geral, trabalho e reprodução. Melhora da fertilidade, qualidade seminal, alívio de dores e disposição na lida.',
     image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=1000&auto=format&fit=crop',
-    alt: 'Acupuntura e Reabilitação Equina'
+    alt: 'Acupuntura e Fisioterapia para Equinos'
   }
 ]
 

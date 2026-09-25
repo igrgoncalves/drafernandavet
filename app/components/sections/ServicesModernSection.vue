@@ -67,7 +67,7 @@ const services = [
   },
   {
     title: 'Equinos',
-    description: 'Medicina integrativa para cavalos de esporte, trabalho e reprodução.',
+    description: 'Acupuntura e fisioterapia: melhora da fertilidade, qualidade seminal, vitalidade no trabalho e bem-estar geral.',
     image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=1000&auto=format&fit=crop',
     link: '/servicos/equinos'
   }

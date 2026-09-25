@@ -214,101 +214,101 @@ const servicesData = {
   'equinos': {
     title: 'Medicina Integrativa para <span>Equinos</span>',
     rawTitle: 'Equinos',
-    badge: 'Esporte, Trabalho & Reprodução',
-    desc: 'Alívio de dores posturais, reabilitação biomecânica e bem-estar físico para cavalos atletas, de lida e reprodutores.',
+    badge: 'Trabalho, Reprodução & Bem-Estar',
+    desc: 'Cuidado integrado, alívio de dores silenciosas e bem-estar para equinos em geral, com foco especial no trabalho e na reprodução.',
     image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=1200&auto=format&fit=crop',
 
     // 1. Dor Silenciosa
     silentPain: {
-      tag: 'A Linguagem dos Cavalos',
-      title: 'Cavalos expressam dor através do comportamento',
-      intro: 'Como presas na natureza, os cavalos evitam demonstrar dor óbvia para não atrair predadores. Muitas vezes, sinais interpretados como "manha", "desobediência" ou refugo são, na verdade, apelos de socorro causados por dores severas na coluna ou nos membros.',
+      tag: 'A Linguagem dos Equinos',
+      title: 'Eles não demonstram a dor: o sinal está na mudança de humor',
+      intro: 'Por instinto natural de sobrevivência, os equinos raramente demonstram dor de forma explícita. O desconforto se manifesta principalmente no comportamento e no humor do dia a dia: irritabilidade na baia, resistência ao contato, recusa na sela ou alterações temperamentais, especialmente em animais de reprodução e trabalho.',
       signs: [
         {
           icon: 'ph:warning-circle-fill',
-          title: 'Resistência ao Trabalho & Refugos',
-          desc: 'Relutância ao encilhar, morder ao apertar a cilha, negar comandos de perna ou refugos repentinos em saltos.'
+          title: 'Mudança de Humor e Temperamento',
+          desc: 'Irritabilidade ao ser escovado, morder ou escoicear ao apertar a cilha, ou ficar retraído e agressivo sem motivo aparente.'
         },
         {
-          icon: 'ph:activity-fill',
-          title: 'Dores no Dorso e Cernelha',
-          desc: 'Espasmos ou encolhimento do lombo ao toque, causados pela pressão contínua da sela ou impacto de pistas duras.'
+          icon: 'ph:heart-break-fill',
+          title: 'Alterações Reprodutivas e Libido',
+          desc: 'Garanhões que evitam a monta por dores lombares ou perdem qualidade seminal pelo estresse; matrizes irritadas que rejeitam o macho ou o manejo.'
         },
         {
-          icon: 'ph:shuffle-fill',
-          title: 'Claudicação Subclínica',
-          desc: 'Encurtamento sutil da passada, desvio de peso ou rigidez inicial na saída da baia.'
+          icon: 'ph:hand-palm-fill',
+          title: 'Resistência ao Trabalho e Manejo',
+          desc: 'Dificuldade para aceitar a sela, relutância ao iniciar o movimento ou perda de disposição nas atividades habituais de lida.'
         },
         {
-          icon: 'ph:egg-fill',
-          title: 'Queda na Eficiência Reprodutiva',
-          desc: 'Éguas e garanhões sob dor musculoesquelética sofrem estresse crônico que diminui diretamente as taxas de prenhez e monta.'
+          icon: 'ph:clock-countdown-fill',
+          title: 'Passada Curta e Rigidez ao Sair',
+          desc: 'Movimentação travada ao sair da baia, demora para aquecer o corpo ou passos mais curtos para poupar o impacto nas articulações.'
         }
       ]
     },
 
     // 2. Alerta: Remédio Apenas Mascara
     maskingAlert: {
-      title: 'O perigo do uso indiscriminado de anti-inflamatórios em equinos',
-      highlight: 'A medicação isolada silencia o sintoma, mas compromete o sistema gástrico e piora a lesão mecânica.',
-      explanation: 'Cavalos submetidos a doses frequentes de anti-inflamatórios sem reabilitação desenvolvem úlceras gástricas severas e sobrecarga renal. Além disso, ao entrar em pista anestesiado, o cavalo força tendões e ligamentos já inflamados, correndo sério risco de lesões irreversíveis.'
+      title: 'Por que apenas dar remédio não resolve a causa?',
+      highlight: 'A medicação alivia temporariamente, mas não trata a dor mecânica nem devolve o equilíbrio do animal.',
+      explanation: 'O uso contínuo de anti-inflamatórios sem fisioterapia mascara a dor real e pode causar úlceras gástricas frequentes em equinos. O animal continua com tensões acumuladas na coluna e bacia, o que mantém o estresse elevado e compromete diretamente sua fertilidade, a qualidade seminal e a disposição diária no trabalho.'
     },
 
     // 3. Método Integrativo
     methodology: {
-      title: 'Como Funciona a Abordagem Integrativa Equina',
-      subtitle: 'Tratamento no próprio haras, hípica ou centro de treinamento, focado no equilíbrio anatômico e funcional.',
+      title: 'Como Funciona o Cuidado Integrativo para Equinos',
+      subtitle: 'Atendimento no próprio haras ou propriedade, de forma calma e respeitosa, focado no bem-estar físico e emocional.',
       steps: [
         {
           number: '01',
-          title: 'Palpação & Exame Ortopédico Completo',
-          desc: 'Inspeção minuciosa dos pontos de acupuntura diagnósticos (Shu dorsais), teste de flexão, aprumos e avaliação dinâmica na guia e montado.'
+          title: 'Avaliação Física, Postural e de Humor',
+          desc: 'Análise minuciosa de pontos de dor na coluna, bacia e membros, aliada à observação do comportamento e histórico na rotina.'
         },
         {
           number: '02',
-          title: 'Descompressão com Acupuntura & Laser',
-          desc: 'Aplicação de eletroacupuntura e laser em grandes cadeias musculares para liberação miofascial imediata e drenagem de inflamações.'
+          title: 'Acupuntura e Fisioterapia no Local',
+          desc: 'Técnicas integrativas suaves para soltar a musculatura, aliviar a dor profunda, estimular a circulação e acalmar o sistema nervoso.'
         },
         {
           number: '03',
-          title: 'Cinesioterapia & Ajuste de Manejo',
-          desc: 'Alongamentos guiados, orientações sobre embocaduras, selas e ajuste da rotina para preservar o conforto físico duradouro.'
+          title: 'Orientações de Manejo e Rotina',
+          desc: 'Dicas práticas para o dia a dia na baia, pasto e lida, garantindo que o equino mantenha o bem-estar, a fertilidade e a vitalidade.'
         }
       ]
     },
 
     // 4. Tratamento Específico
     specificTreatments: {
-      title: 'Tratamentos Específicos para Cavalos',
-      subtitle: 'Tecnologia terapêutica e práticas integrativas aplicadas a grandes animais:',
+      title: 'Benefícios da Acupuntura & Fisioterapia em Equinos',
+      subtitle: 'Como as práticas integrativas aprimoram a fertilidade, a qualidade reprodutiva e a vitalidade na lida:',
       items: [
         {
-          icon: 'ph:lightning-fill',
-          title: 'Eletroacupuntura para Grandes Massas',
-          desc: 'Potencialização dos efeitos da acupuntura com correntes elétricas suaves, promovendo relaxamento muscular profundo no dorso, lombo e garupa.'
-        },
-        {
-          icon: 'ph:flashlight-fill',
-          title: 'Laserterapia em Tendões & Articulações',
-          desc: 'Essencial para acelerar o reparo biológico em casos de desmites, tendinites e sobrecargas no boleto e jarrete.'
-        },
-        {
-          icon: 'ph:arrows-clockwise-fill',
-          title: 'Cinesioterapia & Mobilização Articular',
-          desc: 'Manobras de flexão e exercícios funcionais de chão para devolver a flexibilidade, simetria e amplitude das passadas.'
+          icon: 'ph:horse-fill',
+          title: 'Qualidade do Sêmen & Conforto do Garanhão',
+          desc: 'A acupuntura reduz os níveis de cortisol (estresse) e alivia as dores lombares e pélvicas para a monta, melhorando a circulação testicular, a libido e a qualidade e motilidade do sêmen.'
         },
         {
           icon: 'ph:heart-fill',
-          title: 'Otimização Reprodutiva & Bem-Estar',
-          desc: 'Eliminação da dor física para reduzir níveis de cortisol, garantindo que garanhões montem com conforto e éguas sustentem a gestação em equilíbrio.'
+          title: 'Melhora da Fertilidade em Éguas e Matrizes',
+          desc: 'A acupuntura equilibra o sistema hormonal, melhora o aporte sanguíneo nos órgãos reprodutivos e relaxa a pelve, aumentando a fertilidade e proporcionando conforto na gestação e parto.'
+        },
+        {
+          icon: 'ph:needle-fill',
+          title: 'Benefícios da Acupuntura no Trabalho',
+          desc: 'Liberação profunda de contraturas e alívio do cansaço e dores no dorso de equinos de lida, tração e passeio, restaurando a energia, a amplitude das passadas e a disposição diária.'
+        },
+        {
+          icon: 'ph:sparkle-fill',
+          title: 'Desenvolvimento e Vitalidade de Potros',
+          desc: 'Acompanhamento do crescimento postural e físico dos filhotes, aliviando tensões musculares precoces e assegurando um desenvolvimento harmônico, saudável e dócil.'
         }
       ]
     },
 
     // 5. CTA
     cta: {
-      title: 'Devolva a potência e o conforto ao seu cavalo',
-      desc: 'Atendimento especializado itinerante em haras, centros hípicos e propriedades rurais na região metropolitana de São Paulo e Vale do Paraíba.',
+      title: 'Mais conforto, tranquilidade e saúde para seus equinos',
+      desc: 'Atendimento especializado itinerante em propriedades rurais, haras e centros de criação em São Paulo e Vale do Paraíba.',
       btnText: 'Agendar Avaliação para Equinos'
     }
   }
@@ -337,7 +337,7 @@ const otherServices = computed(() => {
   const all = [
     { slug: 'pequenos-animais', title: 'Pequenos Animais', icon: 'ph:paw-print-fill', desc: 'Reabilitação e controle de dor em cães e gatos' },
     { slug: 'caes-atletas', title: 'Cães Atletas', icon: 'ph:lightning-fill', desc: 'Performance esportiva e prevenção de lesões' },
-    { slug: 'equinos', title: 'Equinos', icon: 'ph:horse-fill', desc: 'Medicina integrativa para esporte e reprodução' }
+    { slug: 'equinos', title: 'Equinos', icon: 'ph:horse-fill', desc: 'Trabalho, reprodução e bem-estar geral' }
   ]
   return all.filter(s => s.slug !== slug.value)
 })

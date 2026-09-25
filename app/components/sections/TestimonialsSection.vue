@@ -58,9 +58,9 @@ const testimonials = [
     pet: "Tutora do Thor (Golden Retriever)"
   },
   {
-    text: "O trabalho com meus cavalos de esporte foi excepcional. Melhora visível no rendimento e na disposição física.",
+    text: "O acompanhamento com nossos cavalos de lida e na criação fez toda a diferença. O humor e a disposição dos animais mudaram visivelmente após a acupuntura.",
     author: "Ricardo Mendes",
-    pet: "Proprietário de Equinos"
+    pet: "Criador e Proprietário de Cavalos"
   },
   {
     text: "A consultoria online de comportamento nos ajudou a criar um ambiente muito mais saudável para nossos gatos.",

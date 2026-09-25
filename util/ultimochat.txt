@@ -1,27 +1,27 @@
-SESSÃO ATUALIZADA EM 24 DE SETEMBRO DE 2026 — 14:10
+SESSÃO ATUALIZADA EM 24 DE SETEMBRO DE 2026 — 22:32
 
 RESUMO DO TRABALHO REALIZADO:
 
-1. OTIMIZAÇÃO MOBILE EM TODAS AS PÁGINAS DO SITE (CARROSSEL HORIZONTAL SNAP COM PEEK):
-   - Detalhes de Serviços (Pequenos Animais, Cães Atletas, Equinos - app/pages/servicos/[slug].vue):
-     - Sinais de Dor Silenciosa (.signs-grid): de 4 cards empilhados verticalmente para carrossel horizontal de 82% com indicador de 4 bolinhas.
-     - Metodologia (.method-steps-grid): de 3 cards com numeração empilhados para carrossel horizontal de 85% com indicador de 3 bolinhas.
-     - Tratamentos Específicos (.treatments-grid): de 4 cards empilhados para carrossel horizontal de 85% com indicador de 4 bolinhas.
-     - Outras Especialidades (.other-services-grid): carrossel suave com 85% peek.
-     - Redução total de mais de 2.000px de altura nas páginas de serviços específicos.
-   - Página Sobre a Dra. Fernanda (app/pages/sobre.vue):
-     - Pilares da Medicina Integrativa (.pillars-grid): transformados em trilha horizontal com 82% de largura e snap.
-     - Fundamento Acadêmico (.academic-modern-grid): os 5 cards de titulações acadêmicas agora deslizam lateralmente com 85% peek em vez de formar uma coluna gigante de 5 blocos.
-   - Página de Contato (app/pages/contato.vue):
-     - Locais de Atendimento (.logistics-grid): transformados em carrossel horizontal snap com peek de 85% e indicador de 3 bolinhas.
-   - Home Page (app/pages/index.vue):
-     - Seções de Serviços, Arsenal Terapêutico e Depoimentos otimizadas com carrossel snap de rolagem lateral e paginação interativa.
+1. REFINAMENTO NA PÁGINA DE EQUINOS (/servicos/equinos) E MENÇÕES NO SITE:
+   - Harmonização terminológica: Restaurada a citação expressa do termo "Equinos" (no título, subtítulo, dados do serviço e CTAs), equilibrando com cavalos em geral.
+   - Destaque específico e aprofundado dos benefícios da Acupuntura:
+     - Fertilidade da Égua / Matrizes: Estimula o equilíbrio hormonal, otimiza o aporte sanguíneo nos órgãos reprodutivos (útero e ovários) e proporciona relaxamento pélvico, aumentando as taxas de concepção e conforto na gestação e parto.
+     - Qualidade do Sêmen do Garanhão: Alívio profundo de dores lombares e pélvicas para a monta sem dor, redução de cortisol (estresse), aumento da circulação testicular, melhorando diretamente a libido, a concentração e a motilidade do sêmen.
+     - Benefícios da Acupuntura no Trabalho: Rebatizado e melhorado de "Alívio de Tensões para Cavalos de Trabalho" para "Benefícios da Acupuntura no Trabalho", com foco em liberação miofascial profunda, descompressão lombar e restauração da energia e disposição diária na lida.
+     - Potros: Desenvolvimento musculoesquelético harmônico e prevenção precoce de alterações posturais.
 
-2. CORREÇÃO DA RESPONSIVIDADE MOBILE NA PÁGINA 404 (app/error.vue):
-   - Escalonamento adaptativo dos animais com `clamp()` e botão de retorno touch-friendly sem vazamento lateral.
+2. ARQUIVOS ATUALIZADOS:
+   - app/pages/servicos/[slug].vue:
+     - Título: "Medicina Integrativa para Equinos", rawTitle: "Equinos".
+     - Benefícios da Acupuntura no Trabalho e itens de fertilidade e qualidade seminal aperfeiçoados.
+   - app/components/sections/HeroSection.vue:
+     - Slide 2: "Bem-estar e Saúde para Equinos e Criação" com destaque a fertilidade, qualidade seminal e lida.
+   - app/components/sections/ServicesModernSection.vue:
+     - Card de Equinos atualizado para destacar fertilidade, sêmen, trabalho e acupuntura.
+   - app/pages/servicos/index.vue:
+     - Resumo de especialidades atualizado.
+   - util/infosite.txt:
+     - Seção de Equinos ajustada com o novo texto de referência.
 
-3. ATUALIZAÇÃO DA FOTO DE PERFIL EM /links:
-   - Foto autêntica da Dra. Fernanda Moreno extraída e aplicada localmente em `/public/images/fernanda-perfil.jpg`.
-
-4. VALIDAÇÃO TÉCNICA:
-   - `npm run build` executado e compilado com sucesso com código de saída 0 (Nuxt 4 + Vite + Nitro).
+3. VALIDAÇÃO TÉCNICA:
+   - Build validado com sucesso e servidor dev ativo.

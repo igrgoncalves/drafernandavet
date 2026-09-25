@@ -13,7 +13,7 @@ const navLinks = [
     children: [
       { name: 'Pequenos Animais', path: '/servicos/pequenos-animais', icon: 'ph:paw-print-fill', desc: 'Cães e Gatos' },
       { name: 'Cães Atletas', path: '/servicos/caes-atletas', icon: 'ph:lightning-fill', desc: 'Performance e Prevenção' },
-      { name: 'Equinos', path: '/servicos/equinos', icon: 'ph:horse-fill', desc: 'Esporte e Reprodução' },
+      { name: 'Equinos', path: '/servicos/equinos', icon: 'ph:horse-fill', desc: 'Trabalho e Reprodução' },
       { name: 'Visão Geral dos Serviços', path: '/servicos', icon: 'ph:squares-four-fill', desc: 'Terapias e Avaliação' }
     ]
   },
